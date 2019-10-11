@@ -7,7 +7,7 @@ now = datetime.now()
 db = SqliteDatabase('apptest.db')
 
 class Info(Model):
-    timestamp = now
+    timestamp = DateTimeField()
     useragent = CharField()
 
     class Meta:

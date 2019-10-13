@@ -13,6 +13,12 @@ logging.config.dictConfig({
         },
         'file': {
             'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        },
+        'file2': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
+        },
+        'file3': {
+            'format': '%(asctime)s %(name)-12s %(levelname)-8s %(message)s'
         }
     },
     'handlers': {
@@ -24,7 +30,19 @@ logging.config.dictConfig({
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'file',
-            'filename': '/tmp/mydebug.log'
+            'filename' : '/tmp/mydebug.log'
+        },
+        'file2': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename' : '/tmp/myrequest.log'
+        },
+        'file3': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'file',
+            'filename' : '/tmp/myserver.log'
         }
     },
     'loggers': {
@@ -34,17 +52,18 @@ logging.config.dictConfig({
         },
         'django.request': {
             'level': 'DEBUG',
-            'handlers': ['console', 'file']
+            'handlers': ['console', 'file2']
         },
         'django.server': {
             'level': 'DEBUG',
-            'handlers': ['console', 'file']
+            'handlers': ['console', 'file3']
         }
     }
 })
 
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
 
 def index(request):
     # Send the Test!! log message to standard out
@@ -56,4 +75,4 @@ def hi(request):
     return HttpResponse('ok ')
 
 def bd(self):
-    return HttpHeaders(self.META)
+    return HttpHeaders(self.META) 
